@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>VidSeg</title>
+  {{ dropzone.load_css() }}
+  {{ dropzone.style('border: 2px dashed #cf2948; margin: 4%; min-height: 300px;') }}
+</head>
+
+  <div style="background-color:#cf2948"class="row">
+    <div  class="col-lg-6">
+      <h1 class="big-heading">VidSeg</h1>
+      <h2 style="text-align: left; padding-left:30px;">Learning made simple.</h2>
+   </div>
+   <div style="color:white;" class="col-lg-6">
+    <div style="padding-right:20px; padding-top:125px;" id="navCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <h2>Segment your videos.</h2>
+        </div>
+        <div class="carousel-item">
+            <h2>Get summaries of the segments.</h2>
+        </div>
+        <div class="carousel-item">
+            <h2>Generate Q&A for the summaries.</h2>
+        </div>
+      </div>
+  </div>
+   </div>
+  </div>
+
+    <div class="flex">
+      <div id="col1">
+          {{ dropzone.create(action='upload') }}
+          {{ dropzone.load_js() }}
+          {{ dropzone.config() }}
+        
+          <h3>Upload a video and click on "Submit"</h3>
+          <form style="padding-bottom:10px;"method="post" action="/">
+              <input class="btn btn-outline-dark btn-sm" type="submit" value="SUBMIT" name="action1"/>
+              <input class="btn btn-outline-dark btn-sm" type="submit" value="Try with demo video" name="action1"/>
+          </form>
+      </div>
+      <div style="padding-top:5px;" id="col2">
+        <div style="background-color: white;">
+          <p style="padding-top:15px;">1. Upload a video from National Geography</p>
+          <img src="{{ url_for('static', filename='images/upload.png')}}" alt="Upload" width="50" height="50">
+          <p style="padding-top:15px;">2. Search for an animal in that video</p>
+          <img src="{{ url_for('static', filename='images/search.png')}}" alt="Upload" width="50" height="50">
+          <p style="padding-top:15px;">3. You will get segments of the video </p>
+          <p>where the animal is present</p>
+          <img src="{{ url_for('static', filename='images/video.png')}}" alt="Upload" width="60" height="60">
+
+        </div>
+        <footer class="colored-section">
+          <a href="https://www.linkedin.com/in/muhammed-shimer-s-1861bb210/"><i class="sicon fa-brands fa-linkedin"></i></a>
+          <a style="padding-right:20px;" href="https://www.linkedin.com/in/varunvaibav-sridharan/"><i class="sicon fa-brands fa-linkedin"></i></a>
+          <p style="text-align:right; padding-right:20px;">© Copyright VidSeg</p>
+        </footer>
+      </div>
+    </div>
+  
+{% endblock %}

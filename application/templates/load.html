@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<img style="margin:15% 25%" src="{{ url_for('static', filename='images/loading.png!bw700')}}" alt="Upload" width="170" height="170">
+
+
+<script>
+    $(document).ready(function(){
+        $.get("/detect").html()    
+      });
+</script>
+  
+{% endblock %}

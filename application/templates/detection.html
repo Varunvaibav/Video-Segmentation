@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding-top:25px;">
+<video style="border: 5px solid #cf2948;" autoplay width="900" height="510" controls>
+    <source src="{{ url_for('static', filename=demoOutput)}}" type="video/mp4">
+</video>
+</div>
+
+<form style="padding-top:50px;"method="post" action="/live">
+    <input class="btn btn-outline-dark btn-sm" type="submit" value="skip" name="skipButton"/>
+</form>
+
+{% endblock %}

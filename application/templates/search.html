@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<img src="{{ url_for('static', filename='images/vidGif.gif')}}" alt="vidGif" width="550" height="400">
+<h1 style="color:#cf2948">Search for an animal</h1>
+
+<form style="text-align:center;" method="post" action="/search">
+    <div class="dropdown">
+        <input id="myInput" style="width:500px; height:35px;" type="text" placeholder="Animals found in the video are listed below" name="search" onclick="myFunction()" onkeyup="filterFunction()">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <div style="height:100px; width:500px;" id="myDropdown" class="dropdown-content overflow-auto">
+        {% for animal in animals %}
+            <a href="#"> {{ animal }} </a>
+        {% endfor %}
+      </div>
+</div>
+</form>
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+
+{% endblock %}
